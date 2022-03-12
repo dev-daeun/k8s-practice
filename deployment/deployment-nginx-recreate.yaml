@@ -9,8 +9,8 @@ spec:
   replicas: 3
   strategy:
     type: Recreate
-    # 배포를 여러번 해도 이전 버전의 리플리카셋은 1개만 남는다.
-    revisionHistoryLimit: 1
+  # 배포를 여러번 해도 이전 버전의 리플리카셋은 1개만 남는다.
+  revisionHistoryLimit: 1
   template:
     metadata:
       labels:
