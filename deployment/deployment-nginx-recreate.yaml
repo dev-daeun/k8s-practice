@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-webserver-recreate
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+  strategy:
+    type: Recreate
+    # 배포를 여러번 해도 이전 버전의 리플리카셋은 1개만 남는다.
+    revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: webserver
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+      # 종료시키려는 파드가 이미 받은 트래픽을 처리하고 종료될 수 있도록 대기하는 시간 설정.
+      terminationGracePeriodSeconds: 10
