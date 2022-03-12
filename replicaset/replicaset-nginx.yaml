@@ -7,14 +7,14 @@ spec:
   selector:
     matchLabels:  # matchLabels 에 있는 라벨이 붙은 파드들을 리플리카셋으로 묶음.
       app: nginx
-    template:
-      metadata:
-        name: pod-webserver
-        labels:
-          app: nginx
-      spec:
-        containers:
-          - name: webserver
-            image: nginx:latest
-            ports:
-              - containerPort: 80
+  template:
+    metadata:
+      name: pod-webserver
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: webserver
+          image: nginx:latest
+          ports:
+            - containerPort: 80
