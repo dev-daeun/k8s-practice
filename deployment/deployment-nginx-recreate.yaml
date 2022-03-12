@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: webserver
-          image: nginx:latest
+          image: nginx:1.20.2
           ports:
             - containerPort: 80
       # 종료시키려는 파드가 이미 받은 트래픽을 처리하고 종료될 수 있도록 대기하는 시간 설정.
