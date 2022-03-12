@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-webserver-rollingupdate
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 3
+  # 배포를 여러번 해도 이전 버전의 리비전은 2개만 남는다.
+  revisionHistoryLimit: 2
+  # 새롭게 생성된 파드의 컨테이너가 어떤 것과도 충돌하지 않고 사용할 수 있도록 준비되어야 하는 최소 시간(초)을 지정하는 선택적 필드이다.
+  # 이 기본 값은 0이다(파드는 준비되는 즉시 사용할 수 있는 것으로 간주됨).
+  # 파드가 준비되었다고 간주되는 시기에 대한 자세한 내용은 컨테이너 프로브를 참조한다.
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: webserver
+          image: nginx:1.20.2
+          ports:
+            - containerPort: 80
+      # 종료시키려는 파드가 이미 받은 트래픽을 처리하고 종료될 수 있도록 대기하는 시간 설정.
+      terminationGracePeriodSeconds: 10
