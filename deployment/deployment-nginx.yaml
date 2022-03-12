@@ -5,10 +5,12 @@ metadata:
 spec:
   replicas: 3
   selector:
-    matchLabels:
+    matchLabels:  # matchLabels 에 있는 라벨이 붙은 파드들을 리플리카셋으로 묶음.
       app: nginx
   template:
     metadata:
+      # 같은 네임스페이스에 중복되는 파드 이름은 불가하므로 이 이름은 무시된다.
+      # 대신 <deployment 이름>-<해시값> 으로 각 파드 이름이 만들어짐.
       name: pod-webserver
       labels:
         app: nginx
