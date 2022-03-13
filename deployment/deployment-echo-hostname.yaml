@@ -8,8 +8,9 @@ spec:
     matchLabels:
       app: webserver
   template:
-    labels:
-      app: webserver
+    metadata:
+      labels:
+        app: webserver
     spec:
       containers:
         - name: echo-hostname
