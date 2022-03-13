@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-clusterip-echo-hostname
+  name: service-clusterip-nginx
 spec:
   type: ClusterIP
   selector:
-    app: webserver
+    # app=nginx 라벨을 갖는 파드들을 서비스 대상으로 간주함.
+    app: nginx
   ports:
     - name: web-port
       port: 8080
