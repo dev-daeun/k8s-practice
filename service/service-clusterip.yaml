@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: service-clusterip-echo-hostname
+spec:
+  type: ClusterIP
+  selector:
+    app: webserver
+  ports:
+    - name: web-port
+      port: 8080
+      targetPort: 80
