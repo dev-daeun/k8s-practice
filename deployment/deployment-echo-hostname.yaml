@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-echo-hostname
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webserver
+  template:
+    labels:
+      app: webserver
+    spec:
+      containers:
+        - name: echo-hostname
+          image: alicek106/rr-test:echo-hostname
+          ports:
+            - containerPort: 80
