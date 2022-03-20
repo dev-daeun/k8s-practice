@@ -9,4 +9,4 @@ spec:
   ports:
     - name: web-port
       port: 80
-      targePort: 80
+      targetPort: 80
