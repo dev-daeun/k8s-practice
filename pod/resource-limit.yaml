@@ -8,7 +8,7 @@ spec:
   containers:
     - name: nginx
       image: nginx:latest
-    resources:
-      limits:
-        memory: "256Mi"
-        cpu: "1000m"
+      resources:
+        limits:
+          memory: "256Mi"
+          cpu: "1000m"
