@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-from-sysvar
+spec:
+  containers:
+    - name: my-container
+      image: busybox
+      args: ['tail', '-f', '/dev/null']
+      envFrom:
+        - configMapRef:
+            name: basic-configmap
+        - configMapRef:
+            name: special-configmap
