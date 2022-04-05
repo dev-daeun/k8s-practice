@@ -4,12 +4,12 @@ metadata:
   name: conf-from-file
 spec:
   volumes:
-    - name: nginx-conf-vol       # 컨피그맵 볼륨
+    - name: nginx-conf-vol        # 컨피그맵 볼륨
       configMap:
-        name: nginx-configmap    # 키/값을 가져올 컨피그맵 이름
+        name: nginx-configmap     # 파드 볼륨에 마운트 시킬 nginx 컨피그맵
   containers:
     - name: my-container
       image: nginx:latest
       volumeMounts:
-        - name: nginx-conf-vol    # volumes 에서 정의한 컨피그맵 볼륨 이름
-          mountPath: /etc/nginx   # 마운트 된 컨피그맵 경로
+        - name: nginx-conf-vol    # 위에서 정의한 볼륨 이름
+          mountPath: /etc/nginx/nginx.conf.template   # 마운트 할 파일 경로
