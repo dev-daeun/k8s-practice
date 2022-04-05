@@ -11,5 +11,6 @@ spec:
     - name: my-container
       image: nginx:latest
       volumeMounts:
-        - name: nginx-conf-vol    # 위에서 정의한 볼륨 이름
-          mountPath: /etc/nginx/nginx.conf.template   # 마운트 할 파일 경로
+        - name: nginx-conf-vol                       # 위에서 정의한 볼륨 이름
+          mountPath: /etc/nginx/nginx.conf.template  # 컨피그맵을 마운트 시킬 경로
+          subPath: nginx.conf.template               # 이미 존재하는 디렉토리 (/etc/nginx) 에 단일 파일을 마운트하려면 subPath 를 설정한다.
