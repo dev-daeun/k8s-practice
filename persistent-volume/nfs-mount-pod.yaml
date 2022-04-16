@@ -7,7 +7,7 @@ spec:
     - name: nfs-volume
       nfs:
         path: /
-        server: {NFS_SERVICE_IP}
+        server: ${NFS_SERVICE_IP}
   containers:
     - name: nfs-mount-container
       image: busybox
