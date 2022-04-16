@@ -5,10 +5,10 @@ metadata:
 spec:
   capacity:
     storage: 4Gi
-    accessModes:
-      # 하나의 노드에서 해당 볼륨이 읽기-쓰기로 마운트 될 수 있다.
-      # ReadWriteOnce 접근 모드에서도 파드가 동일 노드에서 구동되는 경우에는 복수의 파드에서 볼륨에 접근할 수 있다.
-      - ReadWriteOnce
-    awsElasticBlockStore:
-      fsType: ext4
-      volumeID: ${EBS_VOLUME_ID}
+  accessModes:
+    # 하나의 노드에서 해당 볼륨이 읽기-쓰기로 마운트 될 수 있다.
+    # ReadWriteOnce 접근 모드에서도 파드가 동일 노드에서 구동되는 경우에는 복수의 파드에서 볼륨에 접근할 수 있다.
+    - ReadWriteOnce
+  awsElasticBlockStore:
+    fsType: ext4
+    volumeID: ${EBS_VOLUME_ID}
